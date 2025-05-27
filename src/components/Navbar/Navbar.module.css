@@ -1,0 +1,148 @@
+
+.navbar {
+      position: absolute;
+  background-color: transparent !important;
+  color: #f0f0f0; 
+  padding: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030;
+
+}
+
+
+.navbar a {
+  color: #f0f0f0 ; 
+  text-decoration: none ;
+  transition: color 0.3s ease;
+  font-size: 1.5rem; 
+}
+
+.navbar a:hover {
+  color: #ffffff ;
+}
+
+
+.navbar .bi {
+    color: #f0f0f0 ; 
+    font-size: 1.6rem ; 
+    vertical-align: middle;
+    opacity: 1 !important; 
+    line-height: 1 !important;
+}
+
+/* 4. Estilos para el Logo */
+.navbarLogoWrapper {
+   flex-grow: 1;
+   text-align: center;
+}
+
+
+
+/* 5. Estilos para el Botón Hamburguesa (Navbar Toggler) */
+.navbarButton {
+    border: none !important;
+    padding: 0.5rem 0.75rem;
+    line-height: 1;
+    color:#f0f0f0;
+}
+
+
+.searchBox {
+    position: relative;
+    width: 300px; /* Ancho fijo para desktop */
+    margin-left: auto; /* Para empujar el buscador a la derecha en desktop */
+}
+
+.searchBoxMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%; /* Ocupa todo el ancho en mobile */
+    margin-bottom: 1rem; /* Espacio debajo del buscador en mobile */
+    padding-left: 1rem; /* Añade padding para no pegarse al borde en mobile */
+    padding-right: 1rem; /* Añade padding para no pegarse al borde en mobile */
+}
+
+.searchInput {
+    background-color: transparent !important; /* Fondo transparente */
+    border: none !important; /* Sin bordes */
+    border-bottom: 1px solid #f0f0f0 !important; /* Solo borde inferior blanco */
+    border-radius: 0 !important; /* Sin redondeado */
+    color: #f0f0f0 !important; /* Texto del input blanco */
+    padding: 0.5rem 0rem !important; /* Ajuste el padding para el texto */
+    padding-right: 2.5rem !important; /* Espacio para la lupa */
+    box-shadow: none !important; /* Sin sombras */
+}
+
+.searchInput::placeholder {
+    color: #a0a0a0 !important; /* Color del placeholder */
+}
+
+.searchInput:focus {
+    border-bottom-color: #ffffff !important; /* Borde inferior blanco al enfocar */
+}
+
+.searchIcon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem; /* Padding para la lupa */
+    color: #f0f0f0 !important; /* Lupa blanca */
+    font-size: 1.3rem !important;
+    cursor: pointer;
+    z-index: 2; /* Asegura que esté por encima del input */
+}
+.searchIcon .bi {
+    color: #f0f0f0 ; 
+}
+
+/* 7. Estilos para los Enlaces de Menú (Muebles, Espacios, Decoración) */
+.navbarNav {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+
+.navbarNav .navLink {
+    color: #f0f0f0 !important; /* Texto blanco para los enlaces */
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    margin: 0 !important;
+    border: none !important;
+    background-color: transparent !important; /* Elimina cualquier fondo azul */
+}
+.navbarNav .navLink:hover {
+    color: #ffffff !important;
+}
+
+/* 8. Ajustes de Espaciado General y Alineación */
+.container-fluid {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+/* Espacio entre los elementos de la sección derecha (Login, CartWidget) */
+.d-flex.align-items-center > *:not(:last-child) {
+    margin-right: 1.5rem; /* Ajusta el espacio entre Login y CartWidget */
+}
+
+/* Regla para asegurar que los elementos del menú colapsable también se vean bien en mobile */
+.navbar-collapse .navbar-nav {
+    width: 100%; /* Para que el ul ocupe todo el ancho disponible */
+    padding-top: 1rem; /* Espacio superior para el contenido colapsado */
+    background-color: #1a1a1a; /* Fondo oscuro para el menú desplegado */
+    padding-bottom: 1rem; /* Para que no se corte el contenido al final */
+}
+
+.navbar-collapse .nav-link {
+    color: #f0f0f0 !important; /* ¡Texto blanco para los enlaces colapsados! */
+    padding: 0.75rem 1rem !important;
+}
+.navbar-collapse .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
