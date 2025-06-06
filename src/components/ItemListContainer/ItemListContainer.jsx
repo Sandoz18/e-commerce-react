@@ -1,9 +1,19 @@
 import React from "react";
+import styles from './ItemListContainer.module.css'
 
-function ItemListContainer({greeting}){
+{/*forEach siempre retorna undefined, no construye ni devuelve un nuevo array ni un valor acumulado, por eso uso .map **/}
+function ItemListContainer(){
+
     return(
         <>
-        <h2>{greeting}</h2>
+        <div className={styles.ItemListContainer}>
+          {/**<div>
+                  {productos.map ((prod )=><p key={prod.id}>{prod.nombre}</p>)} 
+            </div> */}  
+          
+        </div>
+
+     
         </>
     )
 }

@@ -14,7 +14,7 @@ return(
     <div style={{display: 'flex', flexDirection: 'column' , gap: 10, width: 400}}>
     <p style={{border: 'solid white 3px' , padding: 10, borderRadius: 5 , color: 'white'}}>{count} </p>
     <div style={{display: 'flex', gap:10  }}>
-    <button style={ {  width:   '50%' , backgroundColor:'#ffff'  } } onClick={HandleRestar}> -</button>
+    <button className="bg-blue-#134395" style={ {  width:   '50%'  } } onClick={HandleRestar}> -</button>
      <button style={ {  width:   '50%'   } } onClick={HandleSumar}> +</button>
 </div>
     </div>

@@ -30,7 +30,7 @@
   height: 1.6em;
   box-sizing: border-box;
   /* Ajustar la posición para que esté sobre la esquina superior derecha del ícono */
-  top: 80px; /* Ajusta este valor */
-  right: 18px; /* Ajusta este valor */
+  top: 79px; /* Ajusta este valor */
+  right: 42px; /* Ajusta este valor */
   border: 1px solid #333; /* Un pequeño borde para distinguirlo si el fondo es claro */
 }
