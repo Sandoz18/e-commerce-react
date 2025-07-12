@@ -1,0 +1,245 @@
+.checkoutContainer {
+    padding: 20px;
+    max-width: 500px; 
+    margin: 100px auto; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    font-family: 'Inter', sans-serif;
+}
+
+h2 {
+    color: #000000;     
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.orderConfirmation {
+    text-align: center;
+    padding: 35px 25px; 
+    background-color: #e6ffe6; 
+    color: #28a745; 
+    border-radius: 10px;
+    border: 1px solid #c8e6c9;
+    box-shadow: 0 5px 15px rgba(40,167,69,0.2); 
+    margin-top: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeInScale 0.5s ease-out;
+}
+
+
+
+.orderConfirmation h3 {
+    margin-bottom: 2px;
+    font-size: 1.5rem;
+    color: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.orderConfirmation p {
+    font-size: 1.15em;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.orderConfirmation strong {
+    font-size: 1.8em; /* ID de orden más grande */
+    font-weight: 800; /* Más negrita */
+    color: #007bff; /* Color azul distintivo */
+    word-break: break-all;
+    display: block; /* Para que ocupe su propia línea */
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.orderConfirmation .redirectMessage {
+    margin-top: 25px;
+    font-size: 1em;
+    color: #555;
+    line-height: 1.5;
+}
+
+.buyerDetails {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f0fdf4; /* Fondo muy claro */
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid #d1e7dd;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Sombra interna sutil */
+}
+
+.buyerDetails h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.4em;
+    border-bottom: 2px solid #a9d9b9;
+    padding-bottom: 8px;
+    font-weight: 600;
+}
+
+.buyerDetails p {
+    margin-bottom: 8px;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #444;
+}
+
+.buyerDetails p strong {
+    color: #333;
+    font-size: 1em; /* Resetea el tamaño de strong aquí */
+    font-weight: 700;
+}
+
+.goHomeButton {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+}
+
+.goHomeButton:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,123,255,0.4);
+}
+
+.errorMessage {
+    color: #dc3545; /* Rojo de error */
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #dc3545;
+    border-radius: 8px;
+    background-color: #f8d7da; /* Fondo rojo claro */
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.checkoutForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Aumenta un poco el espacio entre grupos de campos */
+    width: 100%;
+    padding: 0 25px; /* Más margen lateral para los campos */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+.checkoutForm h3 {
+    /* Ajustes para "Datos del Comprador" */
+    margin-top: 10px; /* Más pegado a los campos */
+    margin-bottom: 15px; /* Separación del título principal */
+    color: #2c3e50;
+    font-size: 1.4em; /* Texto más chico */
+    font-weight: 600;
+    text-align: center; /* Centra el título del formulario */
+}
+
+.formGroup {
+    margin-bottom: 0; /* Elimina el margen inferior de cada grupo de formulario */
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 1.05em;
+}
+
+.formGroup input {
+    width: calc(100% - 20px); /* Ajusta el ancho para dar margen lateral */
+    padding: 12px 10px; /* Padding para el texto dentro del input */
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin: 0 auto; /* Centra el input si el width es menor al 100% */
+    display: block; /* Asegura que margin auto funcione */
+}
+
+.formGroup input:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.summaryHeading {
+    margin-top: 10px; /* Margen superior para separar del formulario */
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.6em;
+    font-weight: 600;
+    text-align: center; /* Centra el título del resumen */
+}
+
+.totalAmount {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center; /* Centra el total a pagar */
+    margin-bottom: 1px; /* Más margen antes del botón */
+    
+}
+
+.submitButton {
+    padding: 15px 30px;
+    background-color: #28a745; /* Verde para confirmar */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 10px; /* Más margen debajo del botón */
+    margin-bottom: 20px; /* Añadido margen inferior para el botón */
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(40,167,69,0.3);
+}
+
+.submitButton:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(40,167,69,0.4);
+}
+
+.cartItemSummary{
+    align-items: flex-start !important;
+}
+
+.itemName{
+    background-color: #c0cbd797;
+    align-self: flex-start;
+}
+
+.itemQuantity{
+    color: #218838;
+    margin-right: 0.5rem;
+}
+
+/* Animaciones */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

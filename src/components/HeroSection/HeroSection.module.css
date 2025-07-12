@@ -1,0 +1,57 @@
+.heroSection {
+  background-image:url('../../assets/interiorOpt.png');
+  max-width: 100% !important; /* Asegura que no haya un límite de ancho impuesto */
+  width: 100vw; /* Ocupa el 100% del ancho del viewport */
+  height:100vh; /* Ocupa el 100% de la altura del viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position:center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0 !important; /* Elimina cualquier margen externo */
+  padding: 0 !important; /* Elimina cualquier padding interno (clave para container-fluid) */
+  /*background-image:
+        linear-gradient(rgba(0, 0, 0, 0.186), rgba(0, 0, 0, 0.21));*/
+}
+
+.heroText{
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 500;
+  color:#151515;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.btnTertiary{
+  background-color:#373337;
+  color: #f0f8ff;
+  width: 12.5rem;
+  height: 3.2rem;
+  border-radius: 15px;
+  border:none;
+  margin-top: 0.5rem;
+}
+
+.btnTertiary:hover{
+  background-color:#630259;
+}
+
+
+.heroSection img {
+  width: 100%; /* La imagen ocupa el 100% del ancho de su contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  display: block; /* Elimina cualquier espacio extra debajo de la imagen */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+}

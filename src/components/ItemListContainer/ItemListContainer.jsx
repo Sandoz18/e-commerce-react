@@ -1,84 +1,94 @@
-// src/components/ItemListContainer/ItemListContainer.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
-import { useParams } from 'react-router-dom';
-
+import HeroSection from '../HeroSection/HeroSection';
+import CartContext from '../../context/CartContext';
+import { getProducts, getProductsByCategory } from '../../firebase/db';
+import { BeatLoader } from 'react-spinners';
 function ItemListContainer() {
-  const [items, setItems] = useState([]);
   const { categoryName } = useParams();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { cart, addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    setLoading(true); // Inicia el estado de carga
+    console.log("ItemListContainer: Efecto ejecutado para categoryName:", categoryName);
+    const fetchProducts = async () => {
+      setLoading(true);
+      setError(null);
 
-    const url = categoryName
-      ? `https://dummyjson.com/products/category/${categoryName}`
-      : 'https://dummyjson.com/products';
+      try {
+        let productsToSet;
+        if (categoryName) {
+          productsToSet = await getProductsByCategory(categoryName);
+          console.log(`ItemListContainer: Productos filtrados por categoría '${categoryName}':`, productsToSet);
+        } else {
+          productsToSet = await getProducts();
+          console.log("ItemListContainer: Todos los productos obtenidos:", productsToSet);
+        }
+        setItems(productsToSet);
+      } catch (err) {
+        console.error('ItemListContainer: Error al cargar los productos:', err);
+        setError("Error al cargar los productos. Intente de nuevo más tarde.");
+        setItems([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    console.log("DEBUG: 1. Iniciando fetch para URL:", url);
+    fetchProducts();
+  }, [categoryName, error, setError]);
 
-    new Promise(resolve => {
-      setTimeout(() => {
-        console.log("DEBUG: 2. setTimeout completado, iniciando fetch real.");
-        fetch(url)
-          .then(res => {
-            console.log("DEBUG: 3. Respuesta HTTP recibida. res.ok:", res.ok, "Status:", res.status);
-            if (!res.ok) {
-              // Intenta leer el cuerpo del error si no es un 2xx
-              return res.json().then(errorData => {
-                  throw new Error(`HTTP error! status: ${res.status}, Message: ${errorData.message || 'Unknown error from API'}`);
-              }).catch(() => {
-                  throw new Error(`HTTP error! status: ${res.status}, No JSON error message.`);
-              });
-            }
-            return res.json();
-          })
-          .then(data => {
-            console.log("DEBUG: 4. Data parseada a JSON:", data);
+  if (loading) {
+    return (
+      <div className="container mx-auto p-4 d-flex flex-column align-items-center justify-content-center" style={{ minHeight: '60vh' }}>
+        {isHome && <HeroSection />}
+        <h1 className="text-3xl font-bold text-center my-8 rounded-lg p-4 bg-blue-100 text-blue-800 shadow-md">
+          {categoryName ? `Categoría: ${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}` : 'Todos nuestros productos'}
+        </h1>
+        <BeatLoader color="#007bff" loading={loading} size={15} margin={5} />
+        <p className="text-center text-lg text-gray-600 mt-3">Cargando productos...</p>
+      </div>
+    );
+  }
 
-            if (data && Array.isArray(data.products)) {
-              setItems(data.products);
-              console.log("DEBUG: 5. Productos cargados y establecidos:", data.products.length, "items.");
-            } else {
-              setItems([]);
-              console.warn("DEBUG: 5. 'data.products' no es un array válido. Estableciendo items a vacío. Data recibida:", data);
-            }
-          })
-          .catch(error => {
-            // Este catch captura errores de red, errores HTTP (ej. 404), y errores de parseo JSON.
-            console.error("ERROR: Fallo crítico en el fetch de productos:", error);
-            setItems([]); // Asegura que 'items' sea un array vacío para evitar errores posteriores.
-          })
-          .finally(() => {
-            // ESTA LÍNEA ES CLAVE: se ejecuta siempre, al final del fetch.
-            console.log("DEBUG: 6. Bloque finally ejecutado. Estableciendo loading a false.");
-            setLoading(false);
-            // ESTA LÍNEA TAMBIÉN ES CLAVE: resuelve la Promise del setTimeout.
-            console.log("DEBUG: 7. Promise resuelta.");
-            resolve(); 
-          });
-      }, 500); // Retardo de 500 milisegundos
-    });
+  if (error) {
+    return (
+      <div className="container mx-auto p-4">
+        {isHome && <HeroSection />}
+        <h1 className="text-3xl font-bold text-center my-8 rounded-lg p-4 bg-blue-100 text-blue-800 shadow-md">
+          {categoryName ? `Categoría: ${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}` : 'Todos nuestros productos'}
+        </h1>
+        <p className="text-center text-lg text-red-500">{error}</p>
+      </div>
+    );
+  }
 
-  }, [categoryName]); // Dependencia del useEffect
+  if (items.length === 0) {
+    return (
+      <div className="container mx-auto p-4">
+        {isHome && <HeroSection />}
+        <h1 className="text-3xl font-bold text-center my-8 rounded-lg p-4 bg-blue-100 text-blue-800 shadow-md">
+          {categoryName ? `Categoría: ${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}` : 'Todos nuestros productos'}
+        </h1>
+        <p className="text-center text-lg text-red-500">No hay productos disponibles en esta categoría.</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="container my-4">
-      <h1>
-        {categoryName
-          ? `Categoría: ${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}`
-          : 'Todos nuestros productos'
-        }
+    <div className="container mx-auto p-4">
+      {isHome && <HeroSection />}
+
+      <h1 className="text-3xl font-bold text-center my-8 rounded-lg p-4 bg-blue-100 text-blue-800 shadow-md">
+        {categoryName ? `Categoría: ${categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}` : 'Todos nuestros productos'}
       </h1>
-      {loading ? (
-        <p className="text-center">Cargando productos...</p>
-      ) : items.length > 0 ? (
-        <ItemList items={items} />
-      ) : (
-        <p className="text-center">No se encontraron productos en esta categoría o hubo un error al cargar.</p>
-      )}
+
+      <ItemList items={items} addToCart={addToCart} cart={cart} />
     </div>
   );
 }
-
 export default ItemListContainer;

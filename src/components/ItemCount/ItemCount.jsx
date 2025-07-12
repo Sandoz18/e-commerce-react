@@ -1,11 +1,15 @@
+import React, { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import toast from 'react-hot-toast'; 
+function ItemCount({ stock, initial = 1, onAdd, isProductInCart }) {
+    const [count, setCount] = useState(Math.max(1, Math.min(initial, stock)));    
+    const [addedLocally, setAddedLocally] = useState(isProductInCart);
 
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button'; // Necesitas Button de React-Bootstrap aquí
-
-function ItemCount({ stock, initial = 1, onAdd }) {
-    const [count, setCount] = useState(initial);
-
-    // Asegura que el contador no exceda el stock ni sea menor que 1
+    useEffect(() => {
+        setCount(Math.max(1, Math.min(initial, stock))); // Eliminado el punto y coma extra
+        setAddedLocally(isProductInCart);
+    }, [initial, stock, isProductInCart])
+    
     const increment = () => {
         if (count < stock) {
             setCount(count + 1);
@@ -13,23 +17,32 @@ function ItemCount({ stock, initial = 1, onAdd }) {
     };
 
     const decrement = () => {
-        if (count > 1) { // Mínimo de 1 unidad
+        if (count > 1) {
             setCount(count - 1);
         }
     };
+    
+    const handleAddClick = () => {
+        if (count > 0 && count <= stock) {
+            onAdd(count);
+            setCount(1);
+            setAddedLocally(true);
+        }
+    }
 
     return (
-        <div className="d-flex align-items-center gap-2 mt-3"> {/* Estilos de Bootstrap para alinear */}
+        <div className="d-flex align-items-center gap-2 mt-3">
             <Button variant="outline-secondary" onClick={decrement} disabled={count === 1}>-</Button>
-            <span className="px-3 py-1 border rounded">{count}</span> {/* Muestra el contador */}
+            <span className="px-1 py-1 border rounded">{count}</span>
             <Button variant="outline-secondary" onClick={increment} disabled={count === stock}>+</Button>
-            
-            {/* Botón para agregar al carrito, que llama a la función onAdd pasada como prop */}
-            <Button variant="primary" onClick={() => onAdd(count)} disabled={stock === 0 || count === 0}>
-                Agregar al carrito
+
+            <Button variant="primary"
+             onClick={addedLocally ? () => toast.info("El producto ya se añadió.") : handleAddClick}
+             disabled={stock === 0 || count === 0 || addedLocally}>
+                {addedLocally ? 'Producto añadido' : 'Agregar al carrito'} {/* Corregido para usar addedLocally */}
             </Button>
         </div>
     );
-}
+};
 
 export default ItemCount;

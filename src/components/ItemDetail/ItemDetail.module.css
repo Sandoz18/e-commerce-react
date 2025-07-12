@@ -1,1 +1,18 @@
+.detailContainer {
+    padding-top: 10rem;
+    display: flex; /* Añadir display flex para centrar */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    width: 100%; /* Asegurar que ocupe todo el ancho disponible */
+}
+
+.detailCard {
+    display: flex;
+    background-color: rgb(216, 202, 202);
+    max-width: 500px;
+    width: 100%; /* Asegurar que la tarjeta ocupe el max-width */
+    text-align: center; /* Centra el texto dentro de la tarjeta por defecto */
+   justify-content: center;
+}
+
 

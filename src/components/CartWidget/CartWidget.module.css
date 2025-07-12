@@ -1,0 +1,52 @@
+
+.cartWidgetContainer {
+  position: relative; 
+  color: white; 
+  font-size: 1.5em; 
+ 
+}
+
+
+.cartWidgetLink {  
+  text-decoration: none !important; 
+  color: inherit;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; 
+}
+
+.cartWidgetLink:focus,
+.cartWidgetLink:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;  
+  
+}
+
+.cartWidgetContainer .bi-bag {
+    color: #f0f0f0 !important; 
+    font-size: 1.6rem !important; 
+    opacity: 1 !important;
+    border: none;
+   
+}
+
+
+
+.cartCountBadge {
+  position: absolute;
+  background-color: #ffc107; 
+  color: #333;
+  border-radius: 50%;
+  padding: 0.2em 0.5em;
+  font-size: 0.7em;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1.6em;
+  height: 1.6em;
+  box-sizing: border-box; 
+  top: 5em; /* AJUSTE CLAVE: Posición vertical responsiva (más arriba) */
+  right: 7em; /* AJUSTE CLAVE: Posición horizontal responsiva (más a la derecha) */
+  border: 1px solid #333; }

@@ -1,6 +1,3 @@
-/* Navbar.module.css */
-
-/* --- Estilos generales del Navbar --- */
 .navbar {
     position: fixed;
     align-items: center;
@@ -9,38 +6,35 @@
     left: 0;
     width: 100%;
     z-index: 1030;
-    background-color: #EAE0DD;
+    background-color: #ECE5E6;
 }
 
 .navbarLink {
     color: #222023;
-    text-decoration: none;
+    text-decoration: none !important;
     transition: color 0.3s ease;
     font-size: 1.2rem;
+    background-color: #ECE5E6; /* Consolidado */
+    border: none; /* Consolidado */
+    height: 100%; /* Consolidado */
 }
 
-.navbarLink :hover {
+.navbarLink:hover {
     color: #a1a188;
-    /* Tu color de hover existente */
+    text-decoration: none !important;
 }
 
-/* --- Iconos y texto de "Buscar Tienda" --- */
 .navbarLink i.bi-geo-alt {
-    /* Específico para el icono de ubicación */
     color: #222023 !important;
-    background-color: #DECACA;
-    /* Asegura color negro */
-
+    background-color: #ECE5E6;
 }
 
 .navbarLink span {
-    /* Para el texto "Buscar Tienda" */
     font-size: 1rem;
     font-weight: 400;
     color: #222023;
 }
 
-/* --- Ajustes generales para todos los iconos bi --- */
 .navbar .bi {
     font-size: 1rem;
     vertical-align: middle;
@@ -48,175 +42,185 @@
     line-height: 1;
 }
 
-.scrolleableMenu{
-    max-height: 600px;    
+.scrolleableMenu {
+    max-height: 600px;
     overflow-y: auto;
+    background-color: #ECE5E6;
 }
 
-/* --- Sección central del logo --- */
 .navbarLogoWrapper {
     flex-grow: 1;
     text-align: center;
     margin: 0 auto;
-
-
+    /* margin-left: -10px; */ /* Descomenta y ajusta si es necesario para el centrado fino */
 }
 
 .navbarLogoWrapper img {
-    max-width: 150px;   
+    max-width: 150px;
     margin: 0 auto;
-
 }
 
-/* --- Botón Hamburguesa VISIBLE SIEMPRE y estilo --- */
 .navbarButton {
-    /* Esta es la clase que le aplicas a tu botón de hamburguesa */
     border: none !important;
     padding: 0;
-    /* Sin padding interno del botón */
     line-height: 1;
-    /* Ayuda a la alineación vertical del icono */
     color: #222023 !important;
-    /* Para que el icono sea negro */
     background-color: transparent !important;
-    /* Para que no tenga fondo de botón */
-
-    /* LO CLAVE PARA QUE SE VEA SIEMPRE: */
-    display: block !important;
-    /* FUERZA A QUE SIEMPRE SEA VISIBLE */
-    visibility: visible !important;
-    /* Asegura que no esté oculto por visibilidad */
-    opacity: 1 !important;
-    /* Asegura que no esté transparente */
-
-    /* Ajustes adicionales para el icono */
-    font-size: 1.5rem;
-    /* Tamaño del icono */
-
+    font-size: 1rem;
 }
 
-/* Asegurar que el icono 'bi bi-list' dentro del toggler también sea negro */
+.navbarButton:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 .navbarButton .bi-list {
     color: #222023 !important;
 }
 
-
-/* --- Estilos para los campos de búsqueda (Desktop y Mobile) --- */
-
-
-
-/* Contenedor del buscador móvil (w-100 d-flex d-lg-none) */
 .searchBoxMobileWrapper {
     padding-bottom: 1rem;
     padding-top: 0rem;
     margin-bottom: 0rem;
     margin-top: 0rem;
     padding-left: 30px;
-    /* Espacio lateral para el buscador móvil */
     padding-right: 30px;
-    /* Espacio lateral para el buscador móvil */
-    background-color: chartreuse;
     box-sizing: border-box;
-    ;
 }
 
-/* Contenedor del buscador desktop */
 .searchBoxDesktop {
     display: flex;
     align-items: center;
-    max-width: 700px;
-    width: 100%;
-
+    flex-grow: 1;
+    max-width: 240px; /* Aumentado el ancho máximo */
+    min-width: 180px; /* Aumentado el ancho mínimo */
+    margin-right: 0.5rem; /* Ajustado el margen a la derecha */
 }
 
-/* El input de búsqueda */
-.searchInput {   
-    width: 800px;
+.searchInput {
+    width: 100%;
     background-color: transparent !important;
     border: none !important;
     border-bottom: 1px solid #222023 !important;
-    /* Solo borde inferior */
     border-radius: 0 !important;
     color: #222023 !important;
-    padding: 0.5rem 1rem !important;
-    /* Ajusta el padding para el texto */
+    padding: 0.5rem 0.1rem !important;
     box-shadow: none !important;
-    flex-grow: 1;    
+    flex-grow: 1;
+    font-size: 0.85rem; /* Aumentado ligeramente el tamaño de la fuente */
 }
 
 .searchInput::placeholder {
     color: #222023 !important;
-    background-color: aqua;
-    font-size: 1rem;
+    font-size: 0.85rem;
     text-align: center;
-     
 }
 
 .searchInput:focus {
     border-bottom-color: #a1a188 !important;
-    /* Color de enfoque */
 }
 
-/* El SPAN que contiene el icono de la lupa (es parte del input-group) */
 .searchIconContainer {
-    background-color: transparent;  
-    border: none;  
-    color: #222023;  
+    background-color: transparent;
+    border: none;
+    color: #222023;
     cursor: pointer;
-    padding: 0 1rem;    
-    /* Asegura que el icono quede pegado al input y comparta el borde inferior */
+    padding: 0 0.5rem; /* Reducido el padding para acercar el ícono */
     border-bottom: 0px solid #222023 !important;
     border-top-left-radius: 0 !important;
-    /* Quitar redondeo de la izquierda del span */
     border-bottom-left-radius: 0 !important;
-    /* Quitar redondeo de la izquierda del span */
 }
 
-/* El icono de la lupa dentro del span.searchIconContainer */
 .searchIconContainer .bi-search {
     color: #222023 !important;
     font-size: 1.3rem !important;
-    /* Tamaño de la lupa */
 }
 
-
-/* --- Estilos para los Enlaces de Menú (Muebles, Espacios, Decoración) --- */
 .navbarNav {
-    margin-left: 30px !important;
+    margin-left: 0.1rem;
     padding-left: 0px !important;
     font-size: 1rem;
     display: flex;
-    /* Para alinear los li horizontalmente */
-    gap: 20px;
-    /* Espacio entre los elementos (Muebles, Espacios, Decoración) */
+    gap: 0.1rem;
 }
+
 
 .navbarNav .navLink {
     color: #222023 !important;
-    padding: 0.5rem 0rem !important;
-    /* Reducido para no crear espacio extra */
-    font-weight: 400;
-    font-size: 1.2rem;
+    padding: 0.4rem 0.5rem !important;
+    font-weight: 300;
+    font-size: 0.7rem;
     margin: 0 !important;
     border: none !important;
     background-color: transparent !important;
+    text-decoration: none !important;
 }
 
 .navbarNav .navLink:hover {
     color: #a1a188 !important;
-    /* Tu color de hover existente */
+    text-decoration: none !important;
 }
 
+.navbarNav .navLink:focus,
+.navbarNav .navLink.active {
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
 
-/* --- Espacio entre elementos de la sección derecha (Login, CartWidget) --- */
+.dropdownCategorias {
+    margin-left: 0.1rem;
+}
+
+.dropdownCategorias .dropdown-menu .navLink {
+    text-decoration: none !important;
+    color: #222023 !important;
+}
+
+.dropdownCategorias .dropdown-menu .navLink:hover,
+.dropdownCategorias .dropdown-menu .navLink:focus,
+.dropdownCategorias .dropdown-menu .navLink.active {
+    background-color: #f0f0f0 !important;
+    color: #a1a188 !important;
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.offcanvas-body .nav-link {
+    text-decoration: none !important;
+    color: #222023 !important;
+}
+
+.offcanvas-body .nav-link:hover,
+.offcanvas-body .nav-link:focus,
+.offcanvas-body .nav-link.active {
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.themeToggleButton {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.themeToggleButton:hover,
+.themeToggleButton:active,
+.themeToggleButton:focus {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
 .d-flex.align-items-center>*:not(:last-child) {
     margin-right: 1rem;
 }
 
-/* --- Reglas para el menú colapsable (mobile) --- */
 .navbar-collapse {
     background-color: #222023 !important;
-    /* Fondo del menú colapsable, si es dark */
     width: 100%;
 }
 
@@ -228,7 +232,6 @@
 
 .navbar-collapse .nav-link {
     color: white !important;
-    /* Texto blanco para los enlaces colapsados si el fondo es oscuro */
     padding: 0.75rem 1rem !important;
 }
 
@@ -252,10 +255,12 @@
 
 .scrolledNavbar {
     background-color: #b0c9c9a8;
-
 }
 
-/* Responsive: para pantallas muy chicas */
+.offcanvas-body {
+    background-color: #ECE5E6;
+}
+
 @media (max-width: 375px) {
     .navbarLogoWrapper img {
         max-width: 100px;
